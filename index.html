@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>For Noku 💖</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #fff0f5;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .card {
+      max-width: 400px;
+      margin: auto;
+      background: white;
+      border-radius: 15px;
+      padding: 20px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+
+    img {
+      width: 100%;
+      border-radius: 12px;
+    }
+
+    h2 {
+      margin-top: 15px;
+    }
+
+    button {
+      padding: 12px 20px;
+      margin: 10px;
+      border: none;
+      border-radius: 10px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .yes {
+      background: #ff4d6d;
+      color: white;
+    }
+
+    .no {
+      background: #ccc;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <img src="valentine.jpg" alt="Valentine" />
+    <h2 id="question">Hey Noku 💕<br>Do you have a Valentine?</h2>
+
+    <div id="buttons">
+      <button class="yes" id="yesBtn">Yes</button>
+      <button class="no" id="noBtn">No</button>
+    </div>
+  </div>
+
+  <script>
+    let step = 1;
+
+    const question = document.getElementById("question");
+    const yesBtn = document.getElementById("yesBtn");
+    const noBtn = document.getElementById("noBtn");
+    const buttons = document.getElementById("buttons");
+
+    // STEP 1
+    yesBtn.addEventListener("click", () => {
+      if (step === 1) {
+        // Make YES disappear
+        yesBtn.style.display = "none";
+        question.innerHTML = "Nahhh 😏<br>You gotta be honest Noku...<br>Press No 👇";
+      }
+
+      // STEP 2 YES
+      else if (step === 2) {
+        step = 3;
+        showStep3();
+      }
+    });
+
+    noBtn.addEventListener("click", () => {
+      // STEP 1 NO
+      if (step === 1) {
+        step = 2;
+        showStep2();
+      }
+
+      // STEP 2 NO (make it annoying)
+      else if (step === 2) {
+        noBtn.textContent = "Nah, try again 😌";
+        noBtn.style.position = "absolute";
+        noBtn.style.left = Math.random() * 200 + "px";
+        noBtn.style.top = Math.random() * 200 + "px";
+      }
+    });
+
+    function showStep2() {
+      question.innerHTML = 
+        "Okay then Noku 😏💖<br><br>Do you want to be Jeffrey's Valentine?";
+      
+      yesBtn.style.display = "inline-block";
+      noBtn.style.display = "inline-block";
+
+      yesBtn.textContent = "Yes 💕";
+      noBtn.textContent = "No 🙄";
+    }
+
+    function showStep3() {
+      buttons.style.display = "none";
+      question.innerHTML = 
+        "💌 Message for Noku 💌<br><br>" +
+        "Jeffrey wants to get to know you better.<br>" +
+        "He thinks you're special 💖<br><br>" +
+        "Hooray!!! 🎉💘<br>" +
+        "It’s sealed 😍";
+    }
+  </script>
+
+</body>
+</html>
